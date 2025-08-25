@@ -1,0 +1,5 @@
+union*.txt
+__pycache__
+build
+dist
+FileCombiner.spec
