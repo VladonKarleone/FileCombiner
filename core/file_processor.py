@@ -1,4 +1,5 @@
 import os
+import datetime
 from .constants import SEPARATOR
 
 def process_directory(folder_path, outfile, extensions, base_path=None):
@@ -8,6 +9,11 @@ def process_directory(folder_path, outfile, extensions, base_path=None):
     """
     if base_path is None:
         base_path = folder_path
+    
+    # Добавляем дату/время создания файла
+    current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    outfile.write(f"Файл создан: {current_time}\n")
+    outfile.write(SEPARATOR)
     
     for item in sorted(os.listdir(folder_path)):
         item_path = os.path.join(folder_path, item)
@@ -48,7 +54,8 @@ def restore_files(combined_file_path, target_folder):
         # Разделяем содержимое на секции файлов
         sections = content.split(SEPARATOR)
         
-        for section in sections:
+        # Пропускаем первую секцию с датой создания
+        for section in sections[1:]:
             if not section.strip():
                 continue
                 
@@ -70,6 +77,11 @@ def restore_files(combined_file_path, target_folder):
 
 def process_files_list(file_paths, outfile, base_path):
     """Обрабатывает список файлов и записывает их содержимое в outfile"""
+    # Добавляем дату/время создания файла
+    current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    outfile.write(f"Файл создан: {current_time}\n")
+    outfile.write(SEPARATOR)
+    
     for file_path in file_paths:
         try:
             # Получаем относительный путь для отображения

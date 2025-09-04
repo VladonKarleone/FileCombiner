@@ -12,5 +12,6 @@ PyInstaller.__main__.run([
     '--hidden-import=tkinter',
     '--hidden-import=os',
     '--hidden-import=re',
-    '--hidden-import=json'
+    '--hidden-import=json',
+    '--hidden-import=datetime'
 ])

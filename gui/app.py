@@ -3,6 +3,7 @@ from tkinter import ttk
 from gui.tabs.combine_tab import CombineTab
 from gui.tabs.restore_tab import RestoreTab
 from gui.tabs.error_tab import ErrorTab
+from gui.tabs.help_tab import HelpTab
 
 class FileCombinerApp:
     def __init__(self, root):
@@ -18,10 +19,12 @@ class FileCombinerApp:
         self.combine_tab = CombineTab(self.notebook, self.log_combine)
         self.restore_tab = RestoreTab(self.notebook, self.log_restore)
         self.error_tab = ErrorTab(self.notebook, self.log_error)
+        self.help_tab = HelpTab(self.notebook)
         
         self.notebook.add(self.combine_tab, text="Объединение")
         self.notebook.add(self.restore_tab, text="Восстановление")
         self.notebook.add(self.error_tab, text="По ошибке")
+        self.notebook.add(self.help_tab, text="Справка")
     
     def log_combine(self, message):
         self.combine_tab.log_widget.insert(tk.END, message + "\n")

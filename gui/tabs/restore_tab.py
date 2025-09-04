@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
+import os
 from gui.widgets import create_labeled_entry, create_scrolled_text
 from core.file_processor import restore_files
 from utils.helpers import ensure_directory_exists
